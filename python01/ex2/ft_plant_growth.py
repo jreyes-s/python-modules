@@ -15,7 +15,7 @@ class Plant:
     def update_age(self) -> None:
         self.age += 1
 
-    def show(self) -> str:
+    def show(self) -> None:
         print(f"{self.name}: {round(self.height, 1)}cm, {self.age} days old")
 
 

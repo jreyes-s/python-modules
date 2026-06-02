@@ -86,8 +86,9 @@ class Vegetable(Plant):
 
 def ft_plant_types() -> None:
     print("=== Garden Plant Type ===")
-    flower = Flower("Rose", 15.0, 10, "red")
+
     print("=== Flower ===")
+    flower = Flower("Rose", 15.0, 10, "red")
     flower.showing()
     flower.bloom()
     flower.showing()
