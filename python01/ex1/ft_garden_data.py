@@ -10,19 +10,18 @@ class Plant:
         self.age = age
 
     def show(self) -> None:
+        """ Display the plants information in a single organized line """
         print(f"{self.name}: {self.height}cm, {self.age} days old")
 
 
-def main() -> None:
+if __name__ == "__main__":
     print("=== Garden Plant Registry ===")
 
-    plant1 = Plant("Rose", 25, 30)
-    plant2 = Plant("Sunflower", 80, 45)
-    plant3 = Plant("Cactus", 15, 120)
-    plant1.show()
-    plant2.show()
-    plant3.show()
+    rose = Plant("Rose", 25, 30)
+    sunflower = Plant("Sunflower", 80, 45)
+    cactus = Plant("Cactus", 15, 120)
 
+    garden = [rose, sunflower, cactus]
 
-if __name__ == "__main__":
-    main()
+    for plant in garden:
+        plant.show()
