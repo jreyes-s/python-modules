@@ -20,7 +20,7 @@ class Plant:
             f"Plant created: {self._name}: {round(self._height, 1)}cm, {self._age} days old")
 
     def get_height(self) -> float:
-        return self._height
+        return round(self._height, 1)
 
     def get_age(self) -> int:
         return self._age
