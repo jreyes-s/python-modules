@@ -22,7 +22,8 @@ class Plant:
         self._age += days
 
     def show(self) -> None:
-        print(f"{self._name}: {round(self._height, 1)}cm, {self._age} days old")
+        print(f"{self._name}: {round(self._height, 1)}cm, "
+              f"{self._age} days old")
 
 
 class Flower(Plant):
@@ -61,7 +62,9 @@ class Tree(Plant):
 
     def produce_shade(self) -> None:
         print(
-            f"Tree {self._name} now produces shade of {round(self._height, 1)}cm long and {round(self._trunk, 1)}cm wide.")
+            f"Tree {self._name} now produces shade of "
+            f"{round(self._height, 1)}cm long and "
+            f"{round(self._trunk, 1)}cm wide.")
 
     def show(self) -> None:
         super().show()
@@ -69,14 +72,18 @@ class Tree(Plant):
 
 
 class Vegetable(Plant):
-    def __init__(self, name: str, height: float, age: int, harvest: str, nutritional: int = 0) -> None:
+    def __init__(self,
+                 name: str,
+                 height: float,
+                 age: int,
+                 harvest: str,
+                 nutritional_value: int = 0) -> None:
         super().__init__(name, height, age)
         self._harvest = harvest
-        self._nutritional = nutritional
+        self.nutritional_value = nutritional_value
 
-    def grow(self, amount: int, nutritional_value: int) -> None:
+    def grow(self, amount: float) -> None:
         super().grow(amount)
-        self._nutritional += nutritional_value
 
     def age(self, days: int) -> None:
         super().age(days)
@@ -84,7 +91,7 @@ class Vegetable(Plant):
     def show(self) -> None:
         super().show()
         print(f"Harvest season: {self._harvest}")
-        print(f"Nutritional value: {self._nutritional}")
+        print(f"Nutritional value: {self.nutritional_value}")
 
 
 if __name__ == "__main__":
@@ -110,7 +117,8 @@ if __name__ == "__main__":
     print("=== Vegetable")
     tomato = Vegetable("Tomato", 5.0, 10, "April")
     tomato.show()
-    print(f"[make tomato grow and age for 20 days]")
+    print("[make tomato grow and age for 20 days]")
     tomato.age(20)
-    tomato.grow(42, 20)
+    tomato.grow(42)
+    tomato.nutritional_value = 20
     tomato.show()
