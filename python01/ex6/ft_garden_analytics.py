@@ -46,7 +46,7 @@ def display_plant_analytics(plant: Plant) -> None:
     print(f"[statistics for {plant.name}]")
     plant._stats.display()
     if plant.shade_calls is not None:
-        print(f" {plant.shade_calls} shade")
+        print(f"{plant.shade_calls} shade")
 
 
 class Flower(Plant):
@@ -63,11 +63,11 @@ class Flower(Plant):
 
     def showing(self) -> None:
         super().showing()
-        print(f" Color: {self.color}")
+        print(f"Color: {self.color}")
         if self.is_blooming:
-            print(f" {self.name} is blooming beautifully!")
+            print(f"{self.name} is blooming beautifully!")
         else:
-            print(f" {self.name} has not bloomed yet")
+            print(f"{self.name} has not bloomed yet")
 
 
 class Seed(Flower):
@@ -82,7 +82,7 @@ class Seed(Flower):
 
     def showing(self) -> None:
         super().showing()
-        print(f" Seeds: {self.seed_count}")
+        print(f"Seeds: {self.seed_count}")
 
 
 class Tree(Plant):
@@ -104,11 +104,11 @@ class Tree(Plant):
         print(f" Trunk diameter: {self.trunk_diameter}cm")
 
 
-def ft_garden_analytics():
+if __name__ == "__main__":
     print("=== Garden statistics ===")
 
     print("=== Check year-old")
-    print(f"Is 30 days more than a year? {Plant.check_age(30)}")
+    print(f"Is 30 days more than a year? -> {Plant.check_age(30)}")
     print(f"Is 400 days more than a year? -> {Plant.check_age(400)}")
     print()
 
@@ -147,7 +147,3 @@ def ft_garden_analytics():
     anonymous = Plant.anonymous()
     anonymous.showing()
     display_plant_analytics(anonymous)
-
-
-if __name__ == "__main__":
-    ft_garden_analytics()
