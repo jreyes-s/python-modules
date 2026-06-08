@@ -16,14 +16,13 @@ class Plant:
         self.height = round(float(height), 1)
         self.age = age
         self._stats = Plant.Statistics()
-        self.shade_calls = 0
 
     @staticmethod
     def check_age(age: int) -> bool:
         return age > 365
 
     @classmethod
-    def anonymous(cls):
+    def anonymous(cls) -> "Plant":
         """Creates a plant with default/unknown info."""
         return cls("Unknown plant", 0.0, 0)
 
@@ -45,7 +44,7 @@ def display_plant_analytics(plant: Plant) -> None:
     """Unique function, not part of any class, to display stats."""
     print(f"[statistics for {plant.name}]")
     plant._stats.display()
-    if plant.shade_calls is not None:
+    if hasattr(plant, 'shade_calls'):
         print(f"{plant.shade_calls} shade")
 
 
@@ -97,21 +96,19 @@ class Tree(Plant):
         self.shade_calls += 1
         print(
             f"Tree {self.name} now produces a shade of "
-            f"{self.height}cm long and {self.trunk_diameter}cm wide")
+            f"{self.height}cm long and {self.trunk_diameter}cm wide.")
 
     def showing(self) -> None:
         super().showing()
-        print(f" Trunk diameter: {self.trunk_diameter}cm")
+        print(f"Trunk diameter: {self.trunk_diameter}cm")
 
 
 if __name__ == "__main__":
     print("=== Garden statistics ===")
-
     print("=== Check year-old")
     print(f"Is 30 days more than a year? -> {Plant.check_age(30)}")
     print(f"Is 400 days more than a year? -> {Plant.check_age(400)}")
     print()
-
     print("=== Flower")
     rose = Flower('Rose', 15.0, 10, "red")
     rose.showing()
@@ -122,7 +119,6 @@ if __name__ == "__main__":
     rose.showing()
     display_plant_analytics(rose)
     print()
-
     print("=== Tree")
     oak = Tree('Oak', 200.0, 365, 5)
     oak.showing()
@@ -131,7 +127,6 @@ if __name__ == "__main__":
     oak.produce_shade()
     display_plant_analytics(oak)
     print()
-
     print("=== Seed")
     sunflower = Seed("Sunflower", 80.0, 45, "yellow")
     sunflower.showing()
@@ -142,7 +137,6 @@ if __name__ == "__main__":
     sunflower.showing()
     display_plant_analytics(sunflower)
     print()
-
     print("=== Anonymous")
     anonymous = Plant.anonymous()
     anonymous.showing()

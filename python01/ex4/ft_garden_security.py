@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
 class Plant:
-    """ A secured model representing a plant with encapsulated and validated attributes. """
-
     def __init__(self, name: str, height: float, age: int) -> None:
         self._name = name
 
@@ -17,7 +15,8 @@ class Plant:
         else:
             self._age = age
         print(
-            f"Plant created: {self._name}: {round(self._height, 1)}cm, {self._age} days old")
+            f"Plant created: {self._name}: {round(self._height, 1)}cm, "
+            f"{self._age} days old")
 
     def get_height(self) -> float:
         return round(self._height, 1)
@@ -42,9 +41,9 @@ class Plant:
             print(f"Age updated: {self._age} days")
 
     def show(self) -> None:
-        """ Displays the current state of the plant using protected attributes """
         print(
-            f"Current state: {self._name}: {round(self._height, 1)}cm, {self._age} days old")
+            f"Current state: {self._name}: {round(self._height, 1)}cm, "
+            f"{self._age} days old")
 
 
 if __name__ == "__main__":

@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 
 class Plant:
-    """ A model representing a plant that can grow and update age dynamically """
-
-    def __init__(self, name: str, height: float, age: int, growth_rate: float) -> None:
+    def __init__(self,
+                 name: str,
+                 height: float,
+                 age: int,
+                 growth_rate: float) -> None:
         self.name = name
         self.height = float(height)
         self.age = age

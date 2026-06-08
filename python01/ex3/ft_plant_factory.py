@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
 class Plant:
-    """ A model representing a plant, initialized inmediately upon construction """
-
     def __init__(self, name: str, height: float, age: int) -> None:
         self.name = name
         self.height = float(height)
