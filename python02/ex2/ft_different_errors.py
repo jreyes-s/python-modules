@@ -33,7 +33,6 @@ def test_error_type() -> None:
         garden_operations(0)
     except (ValueError, ZeroDivisionError, FileNotFoundError, TypeError):
         pass
-    print()
     print("All error types tested successfully!")
 
 
