@@ -29,13 +29,11 @@ def test_watering_system(plant_list: list[str]) -> None:
 if __name__ == "__main__":
     print("=== Garden Watering System ===")
 
-    # Test 1: Valid plants
     print()
     print("Testing valid plants...")
     valid_plants = ["Tomato", "Lettuce", "Carrots"]
     test_watering_system(valid_plants)
 
-    # Test 2: Mixed plants
     print()
     print("Testing invalid plants...")
     mixed_plants = ["Tomato", "lettuce", "Carrots"]

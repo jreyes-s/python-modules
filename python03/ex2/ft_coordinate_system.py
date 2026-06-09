@@ -30,7 +30,7 @@ def main() -> None:
     print(f"Got a first tuple: {pos1}")
     print(f"It includes: X={x1}, Y={y1}, Z={z1}")
     print(f"Distance to center: {distance1}")
-
+    print()
     print("Get a second set of coordinates")
     pos2 = get_player_pos()
     x2, y2, z2 = pos2
