@@ -2,14 +2,15 @@
 
 import random
 
-ACHIEVEMENT_POOL = [
+ACHIEVEMENT_POOL: list[str] = [
     'Crafting Genius', 'World Savior', 'Master Explorer', 'Collector Supreme',
     'Untouchable', 'Boss Slayer', 'Strategist', 'Unstoppable', 'Speed Runner',
-    'Survivor', 'Treasure Hunter', 'First Steps', 'Sharp Mind', 'Hidden Path Finder'
+    'Survivor', 'Treasure Hunter', 'First Steps', 'Sharp Mind',
+    'Hidden Path Finder'
 ]
 
 
-def gen_player_achievements() -> set:
+def gen_player_achievements() -> set[str]:
     num_achievements = random.randint(5, 9)
     chosen = random.sample(ACHIEVEMENT_POOL, num_achievements)
 
@@ -31,7 +32,7 @@ def main() -> None:
         print(f"Player {player}: {achiev_func}")
     print()
 
-    all_distinct = set()
+    all_distinct: set[str] = set()
     for achievements in players.values():
         all_distinct = set.union(all_distinct, achievements)
     print(f"All distinct achievements: {all_distinct}")
@@ -44,7 +45,7 @@ def main() -> None:
     print()
 
     for name, achievements in players.items():
-        everyone_else = set()
+        everyone_else: set[str] = set()
         for other_name, other_achievements in players.items():
             if name != other_name:
                 everyone_else = set.union(everyone_else, other_achievements)
