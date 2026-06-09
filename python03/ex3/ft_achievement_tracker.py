@@ -2,60 +2,56 @@
 
 import random
 
-all_possible_achievements = {
-    'Crafting Genius',
-    'Strategist',
-    'World Savior',
-    'Speed Runner',
-    'Survivor',
-    'Master Explorer',
-    'Treasure Hunter',
-    'Unstoppable',
-    'First Steps',
-    'Collector Supreme',
-    'Untouchable',
-    'Sharp Mind',
-    'Boss Slayer',
-    'The King',
-    'Your Favourite Team mamiii',
-    'They Call Me Romeo'
-}
+ACHIEVEMENT_POOL = [
+    'Crafting Genius', 'World Savior', 'Master Explorer', 'Collector Supreme',
+    'Untouchable', 'Boss Slayer', 'Strategist', 'Unstoppable', 'Speed Runner',
+    'Survivor', 'Treasure Hunter', 'First Steps', 'Sharp Mind', 'Hidden Path Finder'
+]
 
 
-def gen_player_achievements(achievement_list: list) -> set:
-    num: int = random.randint(1, len(all_possible_achievements))
-    selection: list = random.sample(achievement_list, num)
+def gen_player_achievements() -> set:
+    num_achievements = random.randint(5, 9)
+    chosen = random.sample(ACHIEVEMENT_POOL, num_achievements)
 
-    return (set(selection))
+    return (set(chosen))
 
 
 def main() -> None:
-    mazo: list = list(all_possible_achievements)
-    players: list = ['Alice', 'Bob', 'Charlie', 'Dylan']
-    players_data: dict = {}
+    print("=== Achievement Tracker System ===")
 
-    for player in players:
-        players_data[player] = gen_player_achievements(mazo)
-        print(f"Player {player}: {players_data[player]}")
+    players = {
+        'Alice': gen_player_achievements(),
+        'Bob': gen_player_achievements(),
+        'Charlie': gen_player_achievements(),
+        'Dylan': gen_player_achievements()
+    }
 
-    all_distinct: set = set.union(*players_data.values())
-    common_achievements: set = set.intersection(*players_data.values())
-    print(f"\nAll distinct achievements: {all_distinct}")
-    print(f"\nCommon achievements: {common_achievements}\n")
+    for player, achiev_func in players.items():
+        print(f"Player {player}: {achiev_func}")
 
-    o_ach = set()
-    for p, ach in players_data.items():
-        o_ach = set.union(*(players_data[name]
-                          for name in players_data if name != p))
-        print(f"Only {p} has: {set.difference(players_data[p], o_ach)}")
+    all_distinct = set()
+    for achievements in players.values():
+        all_distinct = set.union(all_distinct, achievements)
+    print(f"All distinct achievements: {all_distinct}")
 
-    other_ach = set()
-    print()
-    for p, ach in players_data.items():
-        other_ach = set.difference(all_possible_achievements, players_data[p])
-        print(f"{p} is missing: {other_ach}")
+    common = players['Alice']
+    for achievements in players.values():
+        common = set.intersection(common, achievements)
+    print(f"Common achievements: {common}")
+
+    for name, achievements in players.items():
+        everyone_else = set()
+        for other_name, other_achievements in players.items():
+            if name != other_name:
+                everyone_else = set.union(everyone_else, other_achievements)
+        unique_players = achievements - everyone_else
+        print(f"Only {name} has: {unique_players}")
+
+    full_pool_set = set(ACHIEVEMENT_POOL)
+    for name, achievements in players.items():
+        missing = set.difference(full_pool_set, achievements)
+        print(f"{name} is missing: {missing}")
 
 
 if __name__ == "__main__":
-    print("=== Achievement Tracker System ===\n")
     main()
