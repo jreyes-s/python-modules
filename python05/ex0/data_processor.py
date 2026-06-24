@@ -5,15 +5,12 @@ from typing import Any, List
 
 
 class DataProcessor(ABC):
-    """ Esta es una clase de prueba """
-
     def __init__(self):
         self._stored_data: List[str] = []
         self._processed_count: int = 0
 
     @abstractmethod
     def validate(self, data: Any) -> bool:
-        """ Verfica si los datos de entrada son apropiados para este procesador. """
         pass
 
     def ingest(self, data: Any) -> None:
@@ -28,7 +25,6 @@ class DataProcessor(ABC):
             self._stored_data.append(str(data))
 
     def output(self) -> tuple[int, str]:
-        """ Extrae el dato más antiguo almacenado y su rango de procesamiento. """
         if not self._stored_data:
             raise IndexError("No data available.")
 
@@ -68,7 +64,6 @@ class LogProcessor(DataProcessor):
         )
 
     def validate(self, data: Any) -> bool:
-        # 4. Corregido: Implementamos la validación usando el método existente
         if self._is_valid_log(data):
             return True
         if isinstance(data, dict) and data:
@@ -76,16 +71,13 @@ class LogProcessor(DataProcessor):
         return False
 
     def ingest(self, data: Any):
-        print("Ingesttttt")
+        print("Ingest")
 
 
 if __name__ == "__main__":
     print("=== Code Nexus - Data Processor ===")
 
-    # ------------------------------------------
-    # 1. Pruebas de NumericProcessor
-    # ------------------------------------------
-    print("\nTesting Numeric Processor...")
+    print("Testing Numeric Processor...")
     numeric_proc = NumericProcessor()
 
     print(f" Trying to validate input '42': {numeric_proc.validate(42)}")
@@ -107,10 +99,7 @@ if __name__ == "__main__":
         rank, val = numeric_proc.output()
         print(f" Numeric value {rank}: {val}")
 
-    # ------------------------------------------
-    # 2. Pruebas de TextProcessor
-    # ------------------------------------------
-    print("\nTesting Text Processor...")
+    print("Testing Text Processor...")
     text_proc = TextProcessor()
 
     print(f"Trying to validate input '42': {text_proc.validate(42)}")
@@ -123,9 +112,6 @@ if __name__ == "__main__":
     rank, val = text_proc.output()
     print(f"Text value {rank}: {val}")
 
-    # ------------------------------------------
-    # 3. Pruebas de LogProcessor
-    # ------------------------------------------
     print("\nTesting Log Processor...")
     log_proc = LogProcessor()
 
