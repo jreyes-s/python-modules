@@ -14,7 +14,6 @@ class DataProcessor(ABC):
         pass
 
     def ingest(self, data: Any) -> None:
-        """ Procesa y almacena los datos de entrada. """
         if not self.validate(data):
             raise ValueError(
                 f"Improper numeric data")
