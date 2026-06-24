@@ -4,7 +4,7 @@ import random
 
 
 def main() -> None:
-    players_list: list = [
+    players_list: list[str] = [
         'Alice',
         'bob',
         'Charlie',
@@ -16,26 +16,27 @@ def main() -> None:
         'Liam'
     ]
 
-    new_lst_cap: list = [player.capitalize() for player in players_list]
+    new_lst_cap = [player.capitalize() for player in players_list]
 
-    cap_list_only_old: list = [
-        player for player in players_list if player == player.capitalize()]
+    cap_list_only_old = [
+        player for player in players_list if player == player.capitalize()
+    ]
 
-    score_dict: dict = {
+    score_dict = {
         player: random.randint(0, 999) for player in players_list
     }
 
     print(f"Initial list of players: {players_list}")
     print(f"New list with all names capitalized: {new_lst_cap}")
     print(f"New list of capitalized names only: {cap_list_only_old}")
-    print(f"Score dict:: {score_dict}")
+    print(f"Score dict: {score_dict}")
 
-    average_score: float = round(
+    average_score = round(
         sum(score_dict.values()) / len(new_lst_cap), 2
     )
     print(f"Score average is {average_score}")
 
-    high_score: dict = {
+    high_score = {
         player: score_dict[player]
         for player in score_dict if score_dict[player] > average_score
     }
