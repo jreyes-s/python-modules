@@ -5,11 +5,11 @@ import random
 
 
 def gen_event() -> Generator[tuple[str, str], None, None]:
+    """An endless generator picking a random player and action."""
     players: list[str] = [
         "Alek", "Mamba", "Mambo", "Clark", "Kent",
         "TheBoss"
     ]
-
     actions: list[str] = [
         "run", "dance", "climb", "fly", "eat",
         "move", "sleep", "grab", "release"
@@ -27,26 +27,15 @@ def consume_event(lista: list) -> Generator[tuple[str, str], None, None]:
         yield event
 
 
-def main() -> None:
-    events = gen_event()
-    lista: list = []
-    try:
-        for i in range(1000):
-            player_event = next(events)
-            player = player_event[0]
-            action = player_event[1]
-            print(f"Event {i}: Player {player} did action {action}")
-        for _ in range(10):
-            lista.append(next(events))
-    except StopIteration as e:
-        print({e})
-    print(f"Built list of 10 events: {lista}")
-
-    consumer = consume_event(lista)
-    for event in consumer:
-        print(f"Remains in list: {lista}")
-
-
 if __name__ == "__main__":
-    print("=== Game Data Stream Processor ===")
-    main()
+    events = gen_event()
+
+    for i in range(1000):
+        player, action = next(events)
+        print(f"Event {i}: Player {player} did action {action}")
+
+    event_list: list[tuple[str, str]] = [next(events) for _ in range(10)]
+    print(f"Built list of 10 events: {event_list}")
+
+    for _ in consume_event(event_list):
+        print(f"Remains in list: {event_list}")

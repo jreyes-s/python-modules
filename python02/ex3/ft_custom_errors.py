@@ -29,6 +29,7 @@ def raise_plant_problem() -> None:
 
 def raise_water_problem() -> None:
     """Raises a custom WaterError"""
+
     raise WaterError("Not enough water in the tank!")
 
 
