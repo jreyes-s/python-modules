@@ -7,12 +7,21 @@ import random
 def gen_event() -> Generator[tuple[str, str], None, None]:
     """An endless generator picking a random player and action."""
     players: list[str] = [
-        "Alek", "Mamba", "Mambo", "Clark", "Kent",
-        "TheBoss"
+        "alice",
+        "bob",
+        "charlie",
+        "dylan"
     ]
     actions: list[str] = [
-        "run", "dance", "climb", "fly", "eat",
-        "move", "sleep", "grab", "release"
+        "run",
+        "eat",
+        "sleep",
+        "grab",
+        "move",
+        "climb",
+        "swim",
+        "release",
+        "use"
     ]
 
     while True:

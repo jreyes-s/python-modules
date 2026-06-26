@@ -31,14 +31,14 @@ def main() -> None:
     print(f"New list of capitalized names only: {cap_list_only_old}")
     print(f"Score dict: {score_dict}")
 
-    average_score = round(
+    score_average = round(
         sum(score_dict.values()) / len(new_lst_cap), 2
     )
-    print(f"Score average is {average_score}")
+    print(f"Score average is {score_average}")
 
     high_score = {
         player: score_dict[player]
-        for player in score_dict if score_dict[player] > average_score
+        for player in score_dict if score_dict[player] > score_average
     }
     print(f"High scores: {high_score}")
 
