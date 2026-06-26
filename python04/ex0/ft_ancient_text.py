@@ -9,9 +9,11 @@ def main(file_name: str) -> None:
     print(f"Accessing file '{file_name}'")
     try:
         content = open(file_name, 'r')
-        print("---\n")
+        print("---")
+        print()
         print(content.read(), end="")
-        print("\n---")
+        print()
+        print("---")
     except (FileNotFoundError, PermissionError) as e:
         print(f"Error opening file '{file_name}': {e}\n")
     finally:

@@ -16,11 +16,11 @@ def save_data(lines: list[str]) -> None:
             print(f"Saving data to '{new_filename}'")
             for line in lines:
                 new_file.write(line)
+                print(f"Data saved in file '{new_filename}'")
         except Exception as e:
             print(f"Error saving data: {e}\n")
         finally:
             if new_file:
-                print(f"Data saved in file '{new_filename}'\n")
                 new_file.close()
 
 
@@ -29,14 +29,14 @@ def process_data(original_lines: list[str]) -> None:
     transformed_lines: list[str] = []
 
     try:
-        print("\nTransform data:")
-        print("---\n")
+        print("Transform data:")
+        print("---")
         for line in original_lines:
             clean_line = line.rstrip("\n")
             new_line = f"{clean_line}#\n"
             print(new_line, end="")
             transformed_lines.append(new_line)
-        print("\n---")
+        print("---")
         save_data(transformed_lines)
     except Exception as e:
         print(f"Error processing data: {e}")
@@ -49,11 +49,11 @@ def main(filename: str) -> None:
     try:
         content = open(filename, 'r')
         lines = content.readlines()
-        print("---\n")
+        print("---")
         for line in lines:
             new_line = line.rstrip("\n")
             print(new_line)
-        print("\n---")
+        print("---")
     except (FileNotFoundError, PermissionError) as e:
         print(f"Error opening file '{filename}': {e}\n")
     finally:
@@ -69,5 +69,5 @@ if __name__ == "__main__":
         print("Usage: ft_ancient_text.py <file>\n")
         sys.exit(1)
 
-    print("=== Cyber Archives Recovery ===")
+    print("=== Cyber Archives Recovery & Preservation ===")
     main(filename=sys.argv[1])
